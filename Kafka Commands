@@ -1,0 +1,23 @@
+1) Move to kafka folder
+cd ..\..\kafka_2.12-2.3.0\kafka_2.12-2.3.0
+
+2) Start Zookeeper
+bin\windows\zookeeper-server-start.bat config\zookeeper.properties
+
+3) Start Kafka server
+bin\windows\kafka-server-start.bat config\server.properties
+
+4) Create a topic
+kafka-topics.bat --zookeeper localhost:2181 --topic sample --create --partitions 1 --replication-factor 1
+
+5) Check/ list the topics
+kafka-topics.bat --zookeeper localhost:2181 --list
+
+5) Describe a topic
+kafka-topics.bat --zookeeper localhost:2181 --topic sample --describe
+
+6) Create Producer
+kafka-console-producer.bat --broker-list localhost:9092 --topic sample
+
+6) Create Consumer
+kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic sample
